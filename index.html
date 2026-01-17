@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3344.baby | 生生世世宝贝</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background: linear-gradient(135deg, #ffeff6 0%, #fff0f5 100%);
+            color: #8b0000;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0 20px;
+        }
+        
+        .logo {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 3.5rem;
+            color: #ff1493;
+            text-shadow: 3px 3px 0 #ffb6c1;
+            margin-bottom: 10px;
+            letter-spacing: 5px;
+        }
+        
+        .subtitle {
+            font-size: 1.8rem;
+            color: #c71585;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .subtitle::after, .subtitle::before {
+            content: "❤";
+            margin: 0 15px;
+            color: #ff69b4;
+        }
+        
+        .love-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .love-box {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(219, 112, 147, 0.2);
+            border: 2px solid #ffb6c1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .love-box::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, #ff69b4, #ffb6c1, #ff69b4);
+            z-index: -1;
+            filter: blur(15px);
+            opacity: 0.4;
+        }
+        
+        .box-title {
+            font-size: 2rem;
+            color: #db7093;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px dashed #ffb6c1;
+            padding-bottom: 10px;
+            font-weight: 900;
+        }
+        
+        .meaning {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .highlight {
+            color: #ff1493;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .price-section {
+            background: #fffaf0;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px dashed #ff69b4;
+            text-align: center;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            color: #c71585;
+            font-weight: 900;
+        }
+        
+        .installment {
+            font-size: 1.2rem;
+            color: #db7093;
+            margin-top: 5px;
+        }
+        
+        .contact {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #ffb6c1;
+        }
+        
+        .email {
+            font-size: 1.4rem;
+            color: #8b0000;
+            background: #fff0f5;
+            padding: 12px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 10px;
+            border: 2px solid #ff69b4;
+            transition: all 0.3s ease;
+        }
+        
+        .email:hover {
+            background: #ff69b4;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+        }
+        
+        .symbols {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            font-size: 2.5rem;
+            color: #ff1493;
+        }
+        
+        .chinese-art {
+            font-size: 1.1rem;
+            text-align: center;
+            margin: 30px 0;
+            line-height: 1.8;
+            color: #8b4513;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #ff69b4;
+            border-right: 5px solid #ff69b4;
+        }
+        
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .heart {
+            position: absolute;
+            color: rgba(255, 105, 180, 0.3);
+            font-size: 20px;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #c71585;
+            font-size: 1rem;
+            margin-top: 20px;
+            border-top: 1px solid #ffb6c1;
+        }
+        
+        .couple-icon {
+            font-size: 4rem;
+            margin: 20px 0;
+            color: #ff1493;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .love-box {
+                padding: 20px;
+            }
+            
+            .box-title {
+                font-size: 1.7rem;
+            }
+            
+            .price {
+                font-size: 2rem;
+            }
+            
+            .email {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-container" id="hearts-container"></div>
+    
+    <div class="container">
+        <header>
+            <h1 class="logo">3344.baby</h1>
+            <h2 class="subtitle">生生世世 · 宝贝</h2>
+            <div class="couple-icon">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-female"></i>
+                <i class="fas fa-male"></i>
+                <i class="fas fa-heart"></i>
+            </div>
+        </header>
+        
+        <div class="chinese-art">
+            <p>缘定三生，情系四海。三生石上旧精魂，赏月吟风不要论。</p>
+            <p>此域名寓意情人之间永恒的爱恋，象征生生世世永不分离的誓言。</p>
+        </div>
+        
+        <div class="love-container">
+            <div class="love-box">
+                <h3 class="box-title">域名寓意</h3>
+                <p class="meaning">
+                    <span class="highlight">3344</span> 谐音"生生世世"，是中国文化中表达永恒爱意的浪漫数字。<br><br>
+                    <span class="highlight">.baby</span> 代表"宝贝"，是爱侣之间的亲昵称呼。<br><br>
+                    二者结合成为 <span class="highlight">3344.baby</span>，寓意着"生生世世，你永远是我的宝贝"，是爱情最美好的承诺。
+                </p>
+                
+                <div class="symbols">
+                    <div>❤</div>
+                    <div>㊗</div>
+                    <div>囍</div>
+                    <div>永</div>
+                    <div>爱</div>
+                </div>
+            </div>
+            
+            <div class="love-box">
+                <h3 class="box-title">域名信息</h3>
+                
+                <div class="price-section">
+                    <div class="price">$3344 美金</div>
+                    <div class="installment">支持分4期支付，每期 $836</div>
+                </div>
+                
+                <p class="meaning">
+                    此域名专为珍视永恒爱情的人士准备，<br>
+                    适合用于：情侣纪念网站、婚礼策划、爱情品牌、求婚惊喜等浪漫用途。
+                </p>
+                
+                <div class="contact">
+                    <p>如有意向购买此域名，请联系：</p>
+                    <a href="mailto:joshua369x@gmail.com" class="email">
+                        <i class="fas fa-envelope"></i> joshua369x@gmail.com
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chinese-art">
+            <p>“死生契阔，与子成说。执子之手，与子偕老。” ——《诗经·邶风·击鼓》</p>
+            <p>愿天下有情人终成眷属，生生世世永不分离。</p>
+        </div>
+        
+        <footer>
+            <p>3344.baby 停车页 | 本页面仅面向理解中华爱情文化的受众</p>
+            <p>© 2023 生生世世宝贝 版权所有</p>
+        </footer>
+    </div>
+
+    <script>
+        // 创建浮动爱心背景
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            const heartCount = 50;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.animationDuration = `${15 + Math.random() * 20}s`;
+                heart.style.animationDelay = `${Math.random() * 5}s`;
+                heart.style.fontSize = `${15 + Math.random() * 25}px`;
+                heart.style.color = `rgba(255, ${105 + Math.random() * 100}, ${180 + Math.random() * 75}, ${0.2 + Math.random() * 0.3})`;
+                
+                container.appendChild(heart);
+            }
+        }
+        
+        // 页面加载完成后执行
+        window.addEventListener('DOMContentLoaded', (event) => {
+            createHearts();
+            
+            // 添加交互效果
+            const emailLink = document.querySelector('.email');
+            emailLink.addEventListener('mouseenter', function() {
+                this.innerHTML = '<i class="fas fa-heart"></i> joshua369x@gmail.com <i class="fas fa-heart"></i>';
+            });
+            
+            emailLink.addEventListener('mouseleave', function() {
+                this.innerHTML = '<i class="fas fa-envelope"></i> joshua369x@gmail.com';
+            });
+        });
+    </script>
+</body>
+</html>
